@@ -4,6 +4,8 @@
  * `@sanity/typegen` is wired up they should be replaced by generated types.
  */
 
+import type { PortableTextBlock } from '@portabletext/types';
+
 export interface SanityImageAsset {
 	_id: string;
 	_type: 'sanity.imageAsset';
@@ -52,7 +54,7 @@ export interface PartnerBucketEntry extends Partner {
 
 export interface NavigationItem {
 	_id: string;
-	_type: 'home' | 'contact' | 'page';
+	_type: 'home' | 'contact' | 'page' | 'careers';
 	title: string;
 	url: string;
 }
@@ -105,7 +107,7 @@ export interface KeyNumberEntry {
 export interface KeyNumbersBlock extends BlockBase {
 	_type: 'keynumbers';
 	title?: string;
-	text?: string;
+	text?: PortableTextBlock[];
 	keynumbers?: KeyNumberEntry[];
 }
 
@@ -181,4 +183,22 @@ export interface ContactDocument extends Seo {
 	partnership?: Partnership;
 	affiliation?: Affiliation;
 	contentBlocks?: ContactBlock[];
+}
+
+export type OpeningType = 'temporary' | 'permanent';
+
+export interface Opening {
+	_id: string;
+	title?: string;
+	department?: string;
+	type?: OpeningType;
+	location?: string;
+	/** ISO date string (YYYY-MM-DD) from Sanity's `date` field. */
+	deadline?: string;
+	externalUrl?: string;
+}
+
+export interface CareersDocument extends Seo {
+	_id: 'careers';
+	openings?: Opening[];
 }

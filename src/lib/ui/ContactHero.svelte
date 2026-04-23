@@ -24,15 +24,15 @@
 </script>
 
 <section>
-	<div
-		class="mx-auto mb-30 grid max-w-[1920px] grid-cols-12 gap-8 px-4 pt-30 md:mb-40 md:pt-40 lg:mb-60 lg:gap-12 lg:pt-60"
-	>
-		<div class="bg-size-auto pointer-events-none col-span-12 h-8 bg-[url('/src/lib/assets/diagonal_squares_black.svg')] bg-repeat-x"></div>
+	<div class="mx-auto mb-30 grid max-w-[1920px] grid-cols-12 gap-8 px-4 pt-30 md:mb-40 md:pt-40 lg:mb-60 lg:gap-12 lg:pt-60">
+		<div class="col-span-12">
+			<div class="w-full h-8 bg-[url('/src/lib/assets/diagonal_squares_black.svg')] bg-center bg-repeat-x pointer-events-none"></div>
+		</div>
 		<div class="col-span-12 md:col-span-5">
 			<Scramble
 				text="About & contact"
 				speed="slow"
-				class="leading-tight font-bold text-3xl lg:text-4xl xl:text-5xl"
+				class="leading-tight font-bold text-3xl lg:text-4xl xl:text-5xl -translate-y-2"
 			/>
 		</div>
 		<div class="col-span-12 md:col-span-7">

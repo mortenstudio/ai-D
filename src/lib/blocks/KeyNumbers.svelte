@@ -2,6 +2,7 @@
 	import roundsquareFrame from '$lib/assets/roundsquare_frame.svg';
 	import Scramble from '$lib/actions/Scramble.svelte';
 	import SectionLabel from '$lib/ui/SectionLabel.svelte';
+	import { PortableText } from '@portabletext/svelte';
 	import type { KeyNumbersBlock } from '$lib/sanity/types';
 
 	const { block }: { block: KeyNumbersBlock } = $props();
@@ -16,7 +17,7 @@
 				<SectionLabel label={block.title} />
 			</div>
 		{/if}
-		<div class="col-span-12 flex flex-col gap-8 lg:gap-12 xl:gap-16 {block.title ? 'lg:col-span-10' : ''}">
+		<div class="col-span-12 flex flex-col gap-8 lg:gap-12 xl:gap-16 lg:col-span-10">
 			{#if block.keynumbers?.length}
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8">
 					{#each block.keynumbers as item (item._key)}
@@ -37,18 +38,16 @@
 								<Scramble
 									text={item.text}
 									speed="slow"
-									class="text-md md:text-lg lg:text-xl font-bold text-off-black"
+									class="text-md md:text-lg lg:text-xl font-bold text-off-black leading-tight"
 								/>
 							</div>
 						</div>
 					{/each}
 				</div>
 			{/if}
-			{#if block.text}
-				<div class="md:columns-2 gap-4 md:gap-8 lg:gap-12">
-					<p class="text-sm md:text-md lg:text-lg font-family-serif text-off-black">
-						{block.text}
-					</p>
+			{#if block.text?.length}
+				<div class="md:columns-2 gap-4 md:gap-8 lg:gap-12 text-sm md:text-md lg:text-lg font-family-serif text-off-black [&_p:not(:last-child)]:mb-4">
+					<PortableText value={block.text} />
 				</div>
 			{/if}
 		</div>

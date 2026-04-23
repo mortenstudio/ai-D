@@ -28,11 +28,11 @@
 						<div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4 lg:gap-8">
 							{#each block.milestones as item, i (i)}
 								<div class="flex gap-2 md:gap-3">
-									<div class="w-3.75 h-3.75 md:w-4.5 md:h-4.5 aspect-square rounded translate-y-1 md:translate-y-1.25 bg-off-black"></div>
+									<div class="w-3.75 h-3.75 md:w-4.5 md:h-4.5 aspect-square rounded translate-y-0.5 lg:translate-y-0.75 bg-off-black"></div>
 									<Scramble
 										text={item}
 										speed="slow"
-										class="text-md md:text-lg lg:text-xl font-bold text-off-black dark:text-white transition-colors duration-800 ease-out-expo" 
+										class="text-md md:text-lg lg:text-xl leading-tight font-bold text-off-black dark:text-white transition-colors duration-800 ease-out-expo" 
 									/>
 								</div>
 							{/each}

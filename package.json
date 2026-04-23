@@ -42,6 +42,7 @@
 		"vite": "^7.2.6"
 	},
 	"dependencies": {
+		"@portabletext/svelte": "^3.0.1",
 		"@sanity/client": "^7.13.1",
 		"@sanity/image-url": "^2.1.1",
 		"@sanity/sveltekit": "^1.0.6",

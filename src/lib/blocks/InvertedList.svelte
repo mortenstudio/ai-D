@@ -23,26 +23,20 @@
 </script>
 
 <section bind:this={sectionEl}>
-	<div class="flex min-h-screen flex-wrap px-4 my-30 md:my-40 lg:my-60">
-		<div
-			class="sticky top-0 h-56 w-full pointer-events-none bg-linear-to-b from-light-grey via-light-grey dark:from-off-black dark:via-off-black dark:to-transparent transition-colors duration-800 ease-out-expo"
-		>
-			<div
-				class="mt-32 h-8 invert dark:invert-0 bg-[url('/src/lib/assets/diagonal_squares_white.svg')] bg-size-auto bg-repeat-x pointer-events-none transition-colors duration-800 ease-out-expo"
-			></div>
+	<div class="flex lg:min-h-screen flex-wrap px-4 my-30 md:my-40 lg:my-60">
+		<div class="lg:sticky lg:top-0 lg:h-56 mb-14 lg:mb-0 w-full pointer-events-none bg-linear-to-b from-light-grey via-light-grey dark:from-off-black dark:via-off-black dark:to-transparent transition-colors duration-800 ease-out-expo">
+			<div class="lg:mt-32 w-full h-5.5 dark:invert-100 bg-[url('/src/lib/assets/diagonal_squares_black.svg')] bg-size-auto bg-repeat-x transition-colors duration-800 ease-out-expo"></div>
 		</div>
 		<div class="-mt-6 grid grid-cols-1 gap-8 lg:gap-12 lg:grid-cols-12 max-w-[1920px] mx-auto">
 			{#if block.headline}
-				<div class="col-span-5">
-					<h2
-						class="sticky top-50 font-bold text-md md:text-lg lg:text-xl text-off-black dark:text-white transition-colors duration-800 ease-out-expo"
-					>
+				<div class="col-span-12 lg:col-span-5">
+					<h2 class="sticky top-50 font-bold text-md md:text-lg lg:text-xl text-off-black dark:text-white transition-colors duration-800 ease-out-expo">
 						{block.headline}
 					</h2>
 				</div>
 			{/if}
 			{#if block.list?.length}
-				<div class="col-span-4 {block.headline ? 'md:col-start-8' : ''}">
+				<div class="lg:col-start-7 xl:col-start-8 col-span-12 lg:col-span-5 xl:col-span-4">
 					<div class="flex flex-col gap-6 lg:gap-20 xl:gap-32 2xl:gap-40">
 						{#each block.list as item (item._key)}
 							<div class="flex flex-col gap-2 md:gap-4">
@@ -54,9 +48,7 @@
 									/>
 								{/if}
 								{#if item.text}
-									<p
-										class="text-sm md:text-md lg:text-lg font-family-serif text-off-black dark:text-white transition-colors duration-800 ease-out-expo"
-									>
+									<p class="text-sm md:text-md lg:text-lg font-family-serif text-off-black dark:text-white transition-colors duration-800 ease-out-expo">
 										{item.text}
 									</p>
 								{/if}

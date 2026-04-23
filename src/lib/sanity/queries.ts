@@ -46,6 +46,16 @@ const partnerBucketDoc = /* groq */ `
 	}
 `;
 
+const openingDoc = /* groq */ `
+	_id,
+	title,
+	department,
+	type,
+	location,
+	deadline,
+	externalUrl
+`;
+
 const seo = /* groq */ `
 	seoTitle,
 	seoDescription,
@@ -142,6 +152,10 @@ const navigationRef = /* groq */ `
 		_type == "page" => {
 			title,
 			"url": "/" + slug.current
+		},
+		_type == "careers" => {
+			"title": "Careers",
+			"url": "/careers"
 		}
 	}
 `;
@@ -267,5 +281,29 @@ export const allNetworkingPartnersQuery = /* groq */ `
 	*[_type == "networking"] | order(name asc) {
 		_type,
 		${partnerBucketDoc}
+	}
+`;
+
+/**
+ * Singleton: `_id == "careers"`.
+ *
+ * Openings are resolved via their reference and filtered so unpublished or
+ * deleted documents don't surface as `null` entries. They're returned in the
+ * author-defined order from the studio.
+ */
+export const careersPageQuery = /* groq */ `
+	*[_id == "careers"][0]{
+		_id,
+		"openings": openings[defined(@->_id)]->{
+			${openingDoc}
+		},
+		${seo}
+	}
+`;
+
+/** All opening documents ordered by soonest deadline first. */
+export const allOpeningsQuery = /* groq */ `
+	*[_type == "opening"] | order(deadline asc) {
+		${openingDoc}
 	}
 `;
